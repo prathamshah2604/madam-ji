@@ -124,8 +124,6 @@ function Gallery() {
         setSelectedMemory(null);
     };
 
-    let polaroidIndex = 0;
-
     return (
         <>
             <div className="relative w-full">
@@ -142,8 +140,8 @@ function Gallery() {
                 <div className="w-full px-3 sm:px-6 pb-20">
                     <div className="flex flex-col gap-16 sm:gap-20 w-full max-w-5xl mx-auto">
                         {ROW_CONFIG.map((row, rowIdx) => {
-                            const photo1 = { ...row.photos[0], pIdx: polaroidIndex++ };
-                            const photo2 = { ...row.photos[1], pIdx: polaroidIndex++ };
+                            const photo1 = { ...row.photos[0], pIdx: rowIdx * 2 };
+                            const photo2 = { ...row.photos[1], pIdx: rowIdx * 2 + 1 };
 
                             const mem1 = memories[photo1.memIdx] || {};
                             const mem2 = memories[photo2.memIdx] || {};

@@ -1,16 +1,27 @@
 import { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { RoseSvg, SakuraSvg } from "../Landing/FlowerDecoration";
 import Tape from "../Common/Tape";
 
 /**
  * ExpandedPhotoModal - Fullscreen memory spotlight lightbox.
- * Always renders perfectly in the dead center of the screen with a grand
- * expanded polaroid card, bold Playfair typography, and smooth scale-in animation.
+ * Uses createPortal to render directly into document.body so it is always
+ * perfectly centered on the current viewport regardless of scroll position.
  */
 function ExpandedPhotoModal({ memory, onClose }) {
     const backdropRef = useRef(null);
     const cardRef = useRef(null);
+
+    // Prevent background scrolling while modal is open
+    useEffect(() => {
+        if (!memory) return;
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = originalOverflow;
+        };
+    }, [memory]);
 
     // Animate IN smoothly to the exact center of screen
     useEffect(() => {
@@ -26,8 +37,8 @@ function ExpandedPhotoModal({ memory, onClose }) {
         // Pop card into center
         gsap.fromTo(
             cardRef.current,
-            { scale: 0.75, opacity: 0, y: 30 },
-            { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }
+            { scale: 0.8, opacity: 0, y: 25 },
+            { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.4)" }
         );
     }, [memory]);
 
@@ -44,7 +55,7 @@ function ExpandedPhotoModal({ memory, onClose }) {
             scale: 0.85,
             opacity: 0,
             y: 20,
-            duration: 0.25,
+            duration: 0.22,
             ease: "power2.in",
         });
 
@@ -64,12 +75,12 @@ function ExpandedPhotoModal({ memory, onClose }) {
 
     if (!memory) return null;
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 pointer-events-auto">
+    return createPortal(
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-3 sm:p-6 md:p-10 pointer-events-auto overflow-y-auto">
             {/* Darkened blush backdrop */}
             <div
                 ref={backdropRef}
-                className="fixed inset-0 bg-[#230d19]/80 backdrop-blur-md cursor-pointer"
+                className="fixed inset-0 bg-[#230d19]/85 backdrop-blur-md cursor-pointer"
                 onClick={handleClose}
                 aria-label="Close photo overlay"
                 role="button"
@@ -85,26 +96,28 @@ function ExpandedPhotoModal({ memory, onClose }) {
                     my-auto
                     flex
                     w-full
-                    max-w-4xl
-                    max-h-[92vh]
+                    max-w-3xl
+                    max-h-[90vh]
                     flex-col
                     items-center
                     overflow-y-auto
-                    rounded-[2.5rem]
-                    border-4
+                    rounded-3xl
+                    border-3
                     border-[#edd3de]
                     bg-[#fffdfb]
-                    p-6
-                    sm:p-10
-                    shadow-[0_40px_120px_rgba(0,0,0,0.6)]
+                    p-5
+                    sm:p-8
+                    md:p-10
+                    shadow-[0_40px_120px_rgba(0,0,0,0.65)]
                 "
                 role="dialog"
                 aria-modal="true"
                 aria-label="Memory photo expanded"
+                onClick={(e) => e.stopPropagation()}
             >
                 {/* Washi tape header */}
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-20">
-                    <Tape width="w-48 sm:w-60" rotation="-rotate-1" opacity={0.92} />
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                    <Tape width="w-40 sm:w-56" rotation="-rotate-1" opacity={0.92} />
                 </div>
 
                 {/* Close button */}
@@ -112,12 +125,12 @@ function ExpandedPhotoModal({ memory, onClose }) {
                     type="button"
                     onClick={handleClose}
                     className="
-                        absolute right-5 top-5 z-30
-                        flex h-12 w-12 items-center justify-center
+                        absolute right-4 top-4 z-30
+                        flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center
                         rounded-full
                         border-2 border-[#edd3de]
                         bg-[#fff]
-                        font-serif text-2xl font-bold text-[#8a0e44]
+                        font-serif text-xl sm:text-2xl font-bold text-[#8a0e44]
                         shadow-md
                         transition-transform hover:scale-110 hover:bg-[#fcedf2]
                         cursor-pointer
@@ -128,67 +141,68 @@ function ExpandedPhotoModal({ memory, onClose }) {
                 </button>
 
                 {/* Top info strip */}
-                <div className="mb-4 flex w-full items-center justify-between pt-2">
+                <div className="mb-3 flex w-full items-center justify-between pt-1">
                     <div className="flex items-center gap-2">
-                        <SakuraSvg size={24} color="#e0578f" />
-                        <span className="font-serif text-base sm:text-lg font-bold uppercase tracking-[0.2em] text-[#8a0e44]">
+                        <SakuraSvg size={22} color="#e0578f" />
+                        <span className="font-serif text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#8a0e44]">
                             {memory.caption || "A Cherished Moment"}
                         </span>
                     </div>
 
                     {memory.date && (
-                        <span className="rounded-full border-2 border-[#edd3de] bg-[#fcedf2] px-4 py-1 font-serif text-sm sm:text-base font-bold text-[#8a0e44]">
+                        <span className="rounded-full border border-[#edd3de] bg-[#fcedf2] px-3.5 py-0.5 font-serif text-xs sm:text-sm font-bold text-[#8a0e44]">
                             {memory.date}
                         </span>
                     )}
                 </div>
 
-                <div className="mb-6 h-1 w-full rounded-full bg-gradient-to-r from-[#e0578f]/40 via-[#f7b7cb]/60 to-transparent" />
+                <div className="mb-4 h-0.5 w-full rounded-full bg-gradient-to-r from-[#e0578f]/40 via-[#f7b7cb]/60 to-transparent" />
 
                 {/* Photo frame */}
-                <div className="relative max-h-[58vh] w-full overflow-hidden rounded-2xl bg-[#fceef3] shadow-inner flex items-center justify-center">
+                <div className="relative max-h-[50vh] sm:max-h-[55vh] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-[#fceef3] shadow-inner flex items-center justify-center">
                     {memory.image ? (
                         <img
                             src={memory.image}
                             alt={memory.caption || "Memory"}
-                            className="max-h-[58vh] w-full object-contain"
+                            className="max-h-[50vh] sm:max-h-[55vh] w-full object-contain"
                             onError={(e) => {
                                 e.currentTarget.style.display = "none";
                             }}
                         />
                     ) : (
-                        <div className="flex flex-col items-center justify-center py-16 text-[#e0578f]">
-                            <RoseSvg size={80} />
-                            <p className="mt-4 font-serif text-xl font-bold italic">A beautiful moment in our hearts</p>
+                        <div className="flex flex-col items-center justify-center py-12 text-[#e0578f]">
+                            <RoseSvg size={64} />
+                            <p className="mt-3 font-serif text-base font-bold italic">A beautiful moment in our hearts</p>
                         </div>
                     )}
                 </div>
 
                 {/* Caption & Message */}
                 {memory.caption && (
-                    <h3 className="mt-6 text-center font-serif text-3xl sm:text-4xl font-black italic text-[#8a0e44]">
+                    <h3 className="mt-4 sm:mt-6 text-center font-serif text-2xl sm:text-3xl font-black italic text-[#8a0e44]">
                         {memory.caption}
                     </h3>
                 )}
 
                 {memory.message && (
-                    <p className="mt-4 max-w-2xl text-center font-serif text-2xl sm:text-3xl font-bold italic leading-relaxed text-[#2e1420]">
+                    <p className="mt-3 max-w-xl text-center font-serif text-base sm:text-xl font-bold italic leading-relaxed text-[#2e1420]">
                         &ldquo;{memory.message}&rdquo;
                     </p>
                 )}
 
                 {/* Bottom flourish */}
-                <div className="mt-6 flex items-center gap-3">
-                    <div className="h-0.5 w-16 bg-[#e0578f]/40" />
-                    <RoseSvg size={28} color="#e0578f" />
-                    <div className="h-0.5 w-16 bg-[#e0578f]/40" />
+                <div className="mt-4 sm:mt-6 flex items-center gap-3">
+                    <div className="h-0.5 w-12 bg-[#e0578f]/40" />
+                    <RoseSvg size={24} color="#e0578f" />
+                    <div className="h-0.5 w-12 bg-[#e0578f]/40" />
                 </div>
 
-                <p className="mt-2 font-serif text-xl font-black italic text-[#8a0e44]">
+                <p className="mt-2 font-serif text-base sm:text-lg font-black italic text-[#8a0e44]">
                     with all my love ♡
                 </p>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
 

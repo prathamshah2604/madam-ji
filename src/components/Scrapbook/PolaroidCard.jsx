@@ -19,14 +19,26 @@ const PolaroidCard = forwardRef(function PolaroidCard(
     ref
 ) {
     const innerRef = useRef(null);
-    const cardRef = ref || innerRef;
 
-    const handleMouseEnter = () => polaroidHoverIn(cardRef.current, rotationDeg);
-    const handleMouseLeave = () => polaroidHoverOut(cardRef.current, rotationDeg);
+    const setCardRef = (node) => {
+        innerRef.current = node;
+        if (typeof ref === "function") {
+            ref(node);
+        } else if (ref) {
+            ref.current = node;
+        }
+    };
+
+    const handleMouseEnter = () => {
+        if (innerRef.current) polaroidHoverIn(innerRef.current, rotationDeg);
+    };
+    const handleMouseLeave = () => {
+        if (innerRef.current) polaroidHoverOut(innerRef.current, rotationDeg);
+    };
 
     return (
         <button
-            ref={cardRef}
+            ref={setCardRef}
             type="button"
             onClick={onClick}
             onMouseEnter={handleMouseEnter}
