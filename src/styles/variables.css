@@ -1,0 +1,27 @@
+:root {
+    --blush-50: #fdf3f5;
+    --blush-100: #fbe4ea;
+
+    --rose-400: #e0578f;
+    --rose-500: #c2185b;
+    --rose-600: #ad1457;
+
+    --pink-200: #fbd3e0;
+    --pink-300: #f6b8cd;
+
+    --lavender-300: #c9b6ea;
+    --lavender-400: #b39ddb;
+    --violet-600: #7e57c2;
+    --violet-700: #66439e;
+
+    --butter-50: #fdf8e8;
+    --butter-100: #faf0c8;
+
+    --leaf-500: #7fa66b;
+    --leaf-600: #69935a;
+
+    --text-main: #2a1420;
+    --text-soft: #54283d;
+
+    --cream-card: rgba(255, 253, 250, 0.92);
+}
