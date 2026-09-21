@@ -37,7 +37,7 @@ function BirthdayLetter({ onClose }) {
                 aria-label="Close letter backdrop"
             />
 
-            {/* Vintage Stationery Letter (Maximum Expanded & Ultra Legible) */}
+            {/* Vintage Stationery Letter */}
             <div
                 ref={letterRef}
                 className="
@@ -45,27 +45,22 @@ function BirthdayLetter({ onClose }) {
                     z-10
                     my-auto
                     w-full
-                    max-w-[96vw]
-                    2xl:max-w-[1750px]
-                    rounded-[3.5rem]
-                    border-4
+                    max-w-3xl
+                    rounded-3xl
+                    border-2
                     border-[#ebd2dc]
                     bg-[#fffcf9]
-                    px-8
-                    py-16
-                    sm:px-20
-                    sm:py-20
-                    md:px-28
-                    md:py-24
-                    lg:px-36
-                    lg:py-28
-                    shadow-[0_50px_160px_rgba(173,20,87,0.5)]
+                    px-6
+                    py-10
+                    sm:px-12
+                    sm:py-12
+                    shadow-[0_25px_80px_rgba(173,20,87,0.35)]
                 "
                 role="document"
                 aria-label="Personalized birthday letter"
             >
                 {/* Top Rose Edge Gradient Line */}
-                <div className="absolute inset-x-0 top-0 h-5 rounded-t-3xl bg-gradient-to-r from-transparent via-[#e0578f]/80 to-transparent" />
+                <div className="absolute inset-x-0 top-0 h-3 rounded-t-3xl bg-gradient-to-r from-transparent via-[#e0578f]/80 to-transparent" />
 
                 {/* Close Button */}
                 <button
@@ -73,22 +68,24 @@ function BirthdayLetter({ onClose }) {
                     onClick={onClose}
                     className="
                         absolute
-                        right-8
-                        top-8
+                        right-4
+                        top-4
+                        sm:right-6
+                        sm:top-6
                         flex
-                        h-16
-                        w-16
+                        h-10
+                        w-10
                         items-center
                         justify-center
                         rounded-full
-                        border-3
+                        border-2
                         border-[#f0d4de]
                         bg-[#fffaf8]
                         font-serif
-                        text-3xl
-                        font-black
+                        text-lg
+                        font-bold
                         text-[#8a0e44]
-                        shadow-xl
+                        shadow-md
                         transition-transform
                         hover:scale-110
                         hover:bg-[#fcedf2]
@@ -100,29 +97,29 @@ function BirthdayLetter({ onClose }) {
                 </button>
 
                 {/* Letter Header */}
-                <div className="mb-14 flex flex-col items-center text-center">
-                    <div className="flex items-center gap-5">
-                        <SakuraSvg size={40} color="#e0578f" />
-                        <span className="font-serif text-lg sm:text-2xl md:text-3xl uppercase tracking-[0.3em] text-[#8a0e44] font-black">
+                <div className="mb-8 flex flex-col items-center text-center">
+                    <div className="flex items-center gap-3">
+                        <SakuraSvg size={20} color="#e0578f" />
+                        <span className="font-serif text-xs sm:text-sm uppercase tracking-[0.2em] text-[#8a0e44] font-bold">
                             A Handwritten Letter For You
                         </span>
-                        <SakuraSvg size={40} color="#e0578f" />
+                        <SakuraSvg size={20} color="#e0578f" />
                     </div>
 
-                    <h3 className="mt-6 font-serif text-5xl sm:text-7xl md:text-8xl font-black text-[#8a0e44]">
+                    <h3 className="mt-3 font-serif text-3xl sm:text-4xl font-black text-[#8a0e44]">
                         Madam Ji ♡
                     </h3>
 
                     {/* Rose Divider */}
-                    <div className="mt-8 flex items-center justify-center gap-8">
-                        <div className="h-1.5 w-32 sm:w-64 md:w-96 bg-gradient-to-r from-transparent to-[#e0578f]/70" />
-                        <RoseSvg size={56} color="#e0578f" />
-                        <div className="h-1.5 w-32 sm:w-64 md:w-96 bg-gradient-to-l from-transparent to-[#e0578f]/70" />
+                    <div className="mt-4 flex items-center justify-center gap-4">
+                        <div className="h-1 w-20 sm:w-28 bg-gradient-to-r from-transparent to-[#e0578f]/70" />
+                        <RoseSvg size={28} color="#e0578f" />
+                        <div className="h-1 w-20 sm:w-28 bg-gradient-to-l from-transparent to-[#e0578f]/70" />
                     </div>
                 </div>
 
-                {/* Letter Body (Ultra-Clear & Huge Readable Text) */}
-                <div className="space-y-10 text-center sm:text-left font-serif">
+                {/* Letter Body */}
+                <div className="space-y-5 text-center sm:text-left font-serif">
                     {LETTER_PARAGRAPHS.map((paragraph, idx) => {
                         const isGreeting = idx === 0;
                         const isClosing = idx === LETTER_PARAGRAPHS.length - 1;
@@ -131,7 +128,7 @@ function BirthdayLetter({ onClose }) {
                             return (
                                 <p
                                     key={idx}
-                                    className="font-script text-4xl sm:text-6xl md:text-7xl font-black text-[#8a0e44] mb-10 leading-snug"
+                                    className="font-script text-2xl sm:text-3xl font-bold text-[#8a0e44] mb-4 leading-snug"
                                 >
                                     {paragraph}
                                 </p>
@@ -140,11 +137,11 @@ function BirthdayLetter({ onClose }) {
 
                         if (isClosing) {
                             return (
-                                <div key={idx} className="mt-16 pt-10 border-t-3 border-[#f0d4de] text-right">
-                                    <p className="font-script text-5xl sm:text-6xl md:text-7xl font-black text-[#8a0e44]">
+                                <div key={idx} className="mt-8 pt-5 border-t border-[#f0d4de] text-right">
+                                    <p className="font-script text-2xl sm:text-3xl font-bold text-[#8a0e44]">
                                         {paragraph}
                                     </p>
-                                    <p className="font-serif text-2xl sm:text-3xl italic text-[#8a0e44] mt-3 font-bold">
+                                    <p className="font-serif text-sm sm:text-base italic text-[#8a0e44] mt-1.5 font-bold">
                                         Forever cherished ♡
                                     </p>
                                 </div>
@@ -154,7 +151,7 @@ function BirthdayLetter({ onClose }) {
                         return (
                             <p
                                 key={idx}
-                                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[2.1] text-[#220d18] font-semibold tracking-wide"
+                                className="text-sm sm:text-base md:text-lg leading-[1.8] text-[#220d18] font-medium tracking-normal"
                             >
                                 {paragraph}
                             </p>
@@ -163,35 +160,34 @@ function BirthdayLetter({ onClose }) {
                 </div>
 
                 {/* Bottom Wax Seal Accent */}
-                <div className="mt-16 flex items-center justify-center">
+                <div className="mt-8 flex items-center justify-center">
                     <button
                         type="button"
                         onClick={onClose}
                         className="
                             inline-flex
                             items-center
-                            gap-5
+                            gap-3
                             rounded-full
-                            border-4
+                            border-2
                             border-[#f0d4de]
                             bg-[#fffaf8]
-                            px-16
-                            py-5
+                            px-8
+                            py-2.5
                             font-serif
-                            text-xl
-                            sm:text-3xl
-                            font-black
+                            text-sm
+                            sm:text-base
+                            font-bold
                             italic
                             text-[#8a0e44]
-                            shadow-xl
+                            shadow-md
                             transition-all
-                            hover:-translate-y-1
                             hover:bg-[#fcedf2]
-                            hover:shadow-2xl
+                            hover:scale-105
                             cursor-pointer
                         "
                     >
-                        <span>Keep in Heart ♡</span>
+                        <span>Fold Letter & Keep Safe ♡</span>
                     </button>
                 </div>
             </div>

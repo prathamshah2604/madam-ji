@@ -132,15 +132,15 @@ function Gallery() {
                 {/* ──────────────────────────────────────────────
                     HERO CINEMATIC SPOTLIGHT / VIDEO
                 ────────────────────────────────────────────── */}
-                <div className="mb-24 sm:mb-32 flex w-full justify-center">
+                <div className="mb-12 sm:mb-16 flex w-full justify-center">
                     <VideoPolaroid video={memoryVideo.video} />
                 </div>
 
                 {/* ──────────────────────────────────────────────
-                    SUBSTANTIALLY SIZED CHAPTER SPREADS
+                    CHAPTER SPREADS
                 ────────────────────────────────────────────── */}
-                <div className="w-full px-3 sm:px-6 md:px-10 pb-36">
-                    <div className="flex flex-col gap-32 sm:gap-40 w-full max-w-[2600px] mx-auto">
+                <div className="w-full px-3 sm:px-6 pb-20">
+                    <div className="flex flex-col gap-16 sm:gap-20 w-full max-w-5xl mx-auto">
                         {ROW_CONFIG.map((row, rowIdx) => {
                             const photo1 = { ...row.photos[0], pIdx: polaroidIndex++ };
                             const photo2 = { ...row.photos[1], pIdx: polaroidIndex++ };
@@ -151,14 +151,14 @@ function Gallery() {
                             return (
                                 <div key={rowIdx} className="w-full flex flex-col items-center">
                                     {/* Chapter Header Divider */}
-                                    <div className="mb-12 w-full">
+                                    <div className="mb-8 w-full">
                                         <FloralDivider text={`✦ ${row.chapter} ✦`} />
                                     </div>
 
-                                    {/* Grand 2-Column Handcrafted Spread Rows */}
-                                    <div className="flex flex-col gap-12 sm:gap-16 w-full">
+                                    {/* 2-Column Handcrafted Spread Rows */}
+                                    <div className="flex flex-col gap-8 sm:gap-10 w-full">
                                         {/* Spread Pair 1: Left Journal Note + Polaroid 1 */}
-                                        <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 2xl:gap-18 items-stretch">
+                                        <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
                                             <ScrapbookPage
                                                 eyebrow={row.left.eyebrow}
                                                 title={row.left.title}
@@ -180,7 +180,7 @@ function Gallery() {
                                         </div>
 
                                         {/* Spread Pair 2: Polaroid 2 + Right Journal Reflection */}
-                                        <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 2xl:gap-18 items-stretch">
+                                        <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
                                             <PolaroidCard
                                                 image={mem2.image}
                                                 rotation={photo2.rotation}
@@ -209,13 +209,13 @@ function Gallery() {
                     {/* ──────────────────────────────────────────────
                     GRAND CELEBRATION CTA BUTTON
                 ────────────────────────────────────────────── */}
-                    <div className="mt-36 flex flex-col items-center justify-center text-center">
-                        <div className="mb-8 flex items-center gap-4">
-                            <RoseSvg size={44} color="#e0578f" />
-                            <span className="font-serif text-2xl sm:text-3xl font-bold italic text-[#8a0e44]">
+                    <div className="mt-16 sm:mt-20 flex flex-col items-center justify-center text-center">
+                        <div className="mb-5 flex items-center gap-3">
+                            <RoseSvg size={28} color="#e0578f" />
+                            <span className="font-serif text-lg sm:text-xl font-bold italic text-[#8a0e44]">
                                 Ready for the grand birthday wish?
                             </span>
-                            <RoseSvg size={44} color="#e0578f" />
+                            <RoseSvg size={28} color="#e0578f" />
                         </div>
 
                         <Link
@@ -225,30 +225,32 @@ function Gallery() {
                             relative
                             inline-flex
                             items-center
-                            gap-6
+                            gap-3
                             overflow-hidden
                             rounded-full
-                            border-4
+                            border-2
                             border-[#f498b8]
                             bg-gradient-to-r
                             from-[#8a0e44]
                             via-[#ad1457]
                             to-[#8a0e44]
-                            px-16
-                            py-7
-                            shadow-[0_25px_60px_rgba(138,14,68,0.4)]
+                            px-8
+                            py-3.5
+                            sm:px-10
+                            sm:py-4
+                            shadow-[0_15px_40px_rgba(138,14,68,0.35)]
                             transition-all
-                            duration-500
+                            duration-300
                             hover:scale-105
-                            hover:shadow-[0_35px_80px_rgba(138,14,68,0.55)]
+                            hover:shadow-[0_20px_50px_rgba(138,14,68,0.45)]
                             active:scale-95
                         "
                         >
-                            <SakuraSvg size={38} color="#fff" />
-                            <span className="font-serif text-3xl sm:text-4xl font-black tracking-wide text-white drop-shadow-lg">
+                            <SakuraSvg size={24} color="#fff" />
+                            <span className="font-serif text-base sm:text-xl font-black tracking-wide text-white drop-shadow-md">
                                 Continue to Birthday Celebration 🎂 ♡
                             </span>
-                            <SakuraSvg size={38} color="#fff" />
+                            <SakuraSvg size={24} color="#fff" />
                         </Link>
                     </div>
                 </div>

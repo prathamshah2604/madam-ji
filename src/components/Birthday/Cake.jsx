@@ -116,17 +116,17 @@ function Cake({
             className="relative w-full flex flex-col items-center justify-center select-none touch-none"
             style={{ touchAction: "none" }}
         >
-            {/* ── Interactive Cutting Guide (Grand Prominent Indicator) ── */}
+            {/* ── Interactive Cutting Guide ── */}
             {!isLit && !isSliced && (
-                <div className="absolute -top-24 sm:-top-28 md:-top-32 z-30 flex items-center gap-6 rounded-full border-4 border-[#d4af37] bg-[#22100c]/98 px-14 py-5 sm:px-20 sm:py-6 shadow-[0_25px_70px_rgba(0,0,0,0.8)] backdrop-blur-md animate-bounce">
-                    <span className="text-5xl sm:text-6xl">🔪</span>
-                    <span className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#ffd700] tracking-wide drop-shadow-[0_2px_10px_rgba(255,215,0,0.6)]">
+                <div className="absolute -top-14 sm:-top-16 z-30 flex items-center gap-3 rounded-full border-2 border-[#d4af37] bg-[#22100c]/98 px-6 py-2.5 sm:px-8 sm:py-3 shadow-[0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-md animate-bounce">
+                    <span className="text-2xl sm:text-3xl">🔪</span>
+                    <span className="font-serif text-xs sm:text-sm md:text-base font-bold text-[#ffd700] tracking-wide drop-shadow-[0_1px_6px_rgba(255,215,0,0.6)]">
                         Drag knife across or tap button below to cut!
                     </span>
                 </div>
             )}
 
-            {/* ── Visual Knife Cursor (Large Royal Pastry Knife) ── */}
+            {/* ── Visual Knife Cursor (Royal Pastry Knife) ── */}
             {isCutting && sliceCurrent && (
                 <div
                     className="pointer-events-none absolute z-40 transition-transform duration-75"
@@ -136,7 +136,7 @@ function Cake({
                         transform: "translate(-20%, -85%) rotate(-30deg)",
                     }}
                 >
-                    <svg width="160" height="160" viewBox="0 0 100 100" fill="none">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
                         {/* Blade */}
                         <path
                             d="M20 90 L50 15 Q54 5 66 16 L42 92 Z"
@@ -169,25 +169,25 @@ function Cake({
                         x2={sliceCurrent.x}
                         y2={sliceCurrent.y}
                         stroke="#ffd700"
-                        strokeWidth="8"
+                        strokeWidth="5"
                         strokeLinecap="round"
-                        strokeDasharray="10 5"
-                        className="drop-shadow-[0_0_16px_rgba(255,215,0,1)]"
+                        strokeDasharray="8 4"
+                        className="drop-shadow-[0_0_12px_rgba(255,215,0,1)]"
                     />
                 </svg>
             )}
 
-            {/* ── Main Cake Canvas / SVG (Full Horizontal Edge-to-Edge Scale) ── */}
+            {/* ── Main Cake Canvas / SVG (Centerpiece Proportions) ── */}
             <div className="relative flex justify-center items-center w-full px-0 sm:px-2">
                 <svg
                     ref={cakeRef}
                     viewBox="0 0 540 460"
                     style={{
                         width: "100%",
-                        maxWidth: "min(98vw, 2200px)",
+                        maxWidth: "min(92vw, 540px)",
                         height: "auto",
                     }}
-                    className="drop-shadow-[0_60px_140px_rgba(30,10,5,0.65)]"
+                    className="drop-shadow-[0_30px_70px_rgba(30,10,5,0.45)]"
                     xmlns="http://www.w3.org/2000/svg"
                     aria-label="Artisan Gourmet Chocolate Birthday Cake"
                     role="img"

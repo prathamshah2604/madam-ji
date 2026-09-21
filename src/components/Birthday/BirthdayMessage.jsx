@@ -41,13 +41,13 @@ function BirthdayMessage({ onOpenLetter, onReplay }) {
                 ref={headingRef}
                 className="
                     font-serif
-                    text-5xl
-                    sm:text-7xl
-                    md:text-8xl
+                    text-2xl
+                    sm:text-3xl
+                    md:text-4xl
                     font-black
                     tracking-tight
                     text-[#8a0e44]
-                    drop-shadow-[0_8px_35px_rgba(138,14,68,0.3)]
+                    drop-shadow-[0_3px_15px_rgba(138,14,68,0.2)]
                 "
             >
                 Happy Birthday, Harshuu! ❤️
@@ -57,11 +57,11 @@ function BirthdayMessage({ onOpenLetter, onReplay }) {
             <p
                 ref={messageRef}
                 className="
-                    max-w-4xl
+                    max-w-xl
                     font-serif
-                    text-2xl
-                    sm:text-3xl
-                    md:text-4xl
+                    text-sm
+                    sm:text-base
+                    md:text-lg
                     italic
                     leading-relaxed
                     text-[#3a1d29]
@@ -72,64 +72,64 @@ function BirthdayMessage({ onOpenLetter, onReplay }) {
                 surrounded by love, laughter, and everything you cherish.&rdquo;
             </p>
 
-            {/* ── INTERACTIVE WAX-SEALED ENVELOPE CARD (Grand Centerpiece Scale) ── */}
+            {/* ── INTERACTIVE WAX-SEALED ENVELOPE CARD ── */}
             <div
                 onClick={onOpenLetter}
                 className="
                     group
                     relative
-                    mt-12
+                    mt-6
                     flex
                     w-full
-                    max-w-4xl
+                    max-w-xl
                     cursor-pointer
                     flex-col
                     items-center
-                    rounded-[3.5rem]
-                    border-4
+                    rounded-3xl
+                    border-2
                     border-[#ebd2dc]
                     bg-gradient-to-b
                     from-[#fffcfb]
                     to-[#fdf2f6]
-                    px-10
-                    py-16
-                    sm:px-20
-                    sm:py-20
-                    shadow-[0_40px_100px_rgba(173,20,87,0.4)]
+                    px-6
+                    py-8
+                    sm:px-10
+                    sm:py-10
+                    shadow-[0_20px_60px_rgba(173,20,87,0.22)]
                     transition-all
                     duration-500
-                    hover:-translate-y-2
-                    hover:shadow-[0_55px_130px_rgba(173,20,87,0.6)]
+                    hover:-translate-y-1
+                    hover:shadow-[0_25px_70px_rgba(173,20,87,0.32)]
                 "
                 role="button"
                 tabIndex={0}
                 aria-label="Open your wax-sealed birthday letter"
             >
                 {/* Ribbon flap indicator */}
-                <div className="absolute -top-3 h-3 w-80 rounded-full bg-gradient-to-r from-transparent via-[#e0578f] to-transparent" />
+                <div className="absolute -top-2 h-2 w-48 rounded-full bg-gradient-to-r from-transparent via-[#e0578f] to-transparent" />
 
                 {/* Wax Seal Stamp */}
-                <div className="relative mb-6 flex items-center justify-center">
-                    <div className="flex h-36 w-36 items-center justify-center rounded-full bg-gradient-to-br from-[#d81b60] via-[#ad1457] to-[#880e4f] shadow-[0_16px_45px_rgba(173,20,87,0.6)] wax-seal group-hover:scale-110 transition-transform">
-                        <div className="flex h-28 w-28 items-center justify-center rounded-full border-3 border-[#ffcdd2]/70 bg-transparent">
-                            <span className="font-serif text-5xl font-black italic text-[#fff0f4]">
+                <div className="relative mb-4 flex items-center justify-center">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#d81b60] via-[#ad1457] to-[#880e4f] shadow-[0_8px_25px_rgba(173,20,87,0.4)] wax-seal group-hover:scale-110 transition-transform">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#ffcdd2]/70 bg-transparent">
+                            <span className="font-serif text-2xl font-black italic text-[#fff0f4]">
                                 H ♡
                             </span>
                         </div>
                     </div>
                 </div>
 
-                <h4 className="font-serif text-5xl sm:text-6xl md:text-7xl font-black text-[#8a0e44]">
+                <h4 className="font-serif text-2xl sm:text-3xl font-black text-[#8a0e44]">
                     Open Your Letter
                 </h4>
 
-                <p className="mt-4 font-serif text-2xl sm:text-3xl italic text-[#8a0e44] font-bold">
+                <p className="mt-2 font-serif text-xs sm:text-sm italic text-[#8a0e44] font-bold">
                     Tap to break the wax seal and read what is inside ♡
                 </p>
 
-                <div className="mt-10 flex items-center gap-5 rounded-full border-3 border-[#f0d4de] bg-[#fffaf8] px-16 py-6 shadow-lg group-hover:bg-[#fcedf2] transition-colors">
-                    <RoseSvg size={44} color="#e0578f" />
-                    <span className="font-serif text-2xl sm:text-3xl uppercase tracking-widest text-[#8a0e44] font-black">
+                <div className="mt-6 flex items-center gap-3 rounded-full border-2 border-[#f0d4de] bg-[#fffaf8] px-8 py-3 shadow-md group-hover:bg-[#fcedf2] transition-colors">
+                    <RoseSvg size={24} color="#e0578f" />
+                    <span className="font-serif text-xs sm:text-sm uppercase tracking-widest text-[#8a0e44] font-black">
                         Tap to Unfold Letter
                     </span>
                 </div>
@@ -140,7 +140,7 @@ function BirthdayMessage({ onOpenLetter, onReplay }) {
                 <button
                     type="button"
                     onClick={onReplay}
-                    className="mt-6 font-serif text-2xl sm:text-3xl font-black italic text-[#8a0e44] hover:text-[#e0578f] transition-colors cursor-pointer underline underline-offset-8"
+                    className="mt-4 font-serif text-xs sm:text-sm font-bold italic text-[#8a0e44] hover:text-[#e0578f] transition-colors cursor-pointer underline underline-offset-4"
                 >
                     ↻ Celebrate again (Light candles & slice)
                 </button>

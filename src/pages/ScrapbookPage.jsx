@@ -37,7 +37,7 @@ function ScrapbookPage() {
                 <Navbar />
 
                 {/* Spacer for floating navbar */}
-                <div className="pt-28 sm:pt-36" />
+                <div className="pt-4 sm:pt-8" />
 
                 {/* Main Gallery Showcase */}
                 <Gallery />

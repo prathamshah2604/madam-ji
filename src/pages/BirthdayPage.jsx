@@ -165,96 +165,92 @@ function BirthdayPage() {
 
                 {/* ── Grand Celebration Main Stage Card (Full Edge-to-Edge Scope) ── */}
                 <div
-                    className="relative z-10 w-full flex justify-center px-1 sm:px-2"
-                    style={{ width: "100%", maxWidth: "100%" }}
+                    className="relative z-10 w-full flex justify-center px-2 sm:px-4"
                 >
                     <div
                         className="
                             relative
                             flex
                             w-full
+                            max-w-5xl
                             flex-col
                             items-center
                             justify-center
                             overflow-hidden
-                            rounded-[2rem]
-                            sm:rounded-[3.5rem]
-                            border-4
+                            rounded-3xl
+                            border-2
                             border-[#ebd2dc]
                             bg-[#fffcf9]/95
-                            px-3
-                            py-10
+                            px-4
+                            py-8
                             sm:px-8
-                            sm:py-14
-                            md:px-12
-                            md:py-18
-                            lg:px-16
-                            lg:py-22
-                            shadow-[0_40px_130px_rgba(173,20,87,0.28)]
+                            sm:py-12
+                            md:px-10
+                            md:py-14
+                            shadow-[0_20px_60px_rgba(173,20,87,0.18)]
                             backdrop-blur-md
                         "
-                        style={{ width: "100%", minHeight: "92vh" }}
                     >
                         {/* Botanical Corner Accents */}
                         <FloralCorner position="top-left" className="opacity-80 -top-6 -left-6" />
                         <FloralCorner position="top-right" className="opacity-80 -top-6 -right-6" />
 
                         {/* Top Rose Edge Gradient Line */}
-                        <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-r from-transparent via-[#e0578f]/80 to-transparent" />
+                        <div className="absolute inset-x-0 top-0 h-3 bg-gradient-to-r from-transparent via-[#e0578f]/80 to-transparent" />
 
                         {/* Corner Washi Tape Accents */}
-                        <div className="absolute -top-5 left-10 sm:left-20 z-20">
-                            <Tape width="w-56 sm:w-80" rotation="-rotate-2" opacity={0.92} />
+                        <div className="absolute -top-4 left-8 sm:left-14 z-20">
+                            <Tape width="w-32 sm:w-48" rotation="-rotate-2" opacity={0.92} />
                         </div>
-                        <div className="absolute -top-5 right-10 sm:right-20 z-20">
-                            <Tape width="w-56 sm:w-80" rotation="rotate-2" opacity={0.92} />
+                        <div className="absolute -top-4 right-8 sm:right-14 z-20">
+                            <Tape width="w-32 sm:w-48" rotation="rotate-2" opacity={0.92} />
                         </div>
 
                         {/* ── Grand Celebration Header ── */}
-                        <div className="mb-8 flex flex-col items-center text-center">
+                        <div className="mb-6 flex flex-col items-center text-center">
                             {/* Eyebrow badge */}
-                            <div className="inline-flex items-center gap-4 rounded-full border-3 border-[#f0d4de] bg-[#fffaf8] px-12 py-4 shadow-md">
-                                <SakuraSvg size={36} color="#e0578f" />
-                                <span className="font-serif text-lg sm:text-2xl md:text-3xl font-black uppercase tracking-[0.25em] text-[#8a0e44]">
+                            <div className="inline-flex items-center gap-2.5 rounded-full border-2 border-[#f0d4de] bg-[#fffaf8] px-6 py-2 shadow-sm">
+                                <SakuraSvg size={22} color="#e0578f" />
+                                <span className="font-serif text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#8a0e44]">
                                     A Royal Celebration For Madam Ji
                                 </span>
-                                <SakuraSvg size={36} color="#e0578f" />
+                                <SakuraSvg size={22} color="#e0578f" />
                             </div>
 
                             {/* Grand Title */}
                             <h1
                                 className="
-                                    mt-8
+                                    mt-5
                                     font-serif
                                     font-black
                                     tracking-tight
                                     text-[#8a0e44]
-                                    drop-shadow-[0_8px_35px_rgba(138,14,68,0.3)]
+                                    drop-shadow-[0_4px_20px_rgba(138,14,68,0.22)]
                                 "
                                 style={{
-                                    fontSize: "clamp(4rem, 8.5vw, 9rem)",
-                                    lineHeight: 1.05,
+                                    fontSize: "clamp(2.5rem, 5vw, 3.8rem)",
+                                    lineHeight: 1.1,
                                 }}
                             >
                                 Happy Birthday, Harshuu! ❤️
                             </h1>
 
                             {/* Rose Accent Divider */}
-                            <div className="mt-8 flex items-center justify-center gap-10">
-                                <div className="h-2 w-36 bg-gradient-to-r from-transparent to-[#e0578f]/80 sm:w-72 md:w-[450px]" />
-                                <RoseSvg size={64} color="#e0578f" />
-                                <div className="h-2 w-36 bg-gradient-to-l from-transparent to-[#e0578f]/80 sm:w-72 md:w-[450px]" />
+                            <div className="mt-4 flex items-center justify-center gap-4 sm:gap-6">
+                                <div className="h-1 w-20 bg-gradient-to-r from-transparent to-[#e0578f]/80 sm:w-32" />
+                                <RoseSvg size={36} color="#e0578f" />
+                                <div className="h-1 w-20 bg-gradient-to-l from-transparent to-[#e0578f]/80 sm:w-32" />
                             </div>
 
                             {/* Subtitle / Step Instruction */}
                             <p
                                 className="
-                                    mt-8
-                                    max-w-6xl
+                                    mt-4
+                                    max-w-2xl
                                     font-serif
-                                    text-2xl
-                                    sm:text-4xl
-                                    md:text-5xl
+                                    text-base
+                                    sm:text-lg
+                                    md:text-xl
                                     font-bold
                                     italic
                                     text-[#2c1420]
@@ -269,8 +265,8 @@ function BirthdayPage() {
                             </p>
                         </div>
 
-                        {/* ── THE INTERACTIVE CAKE (Full Horizontal Stretch) ── */}
-                        <div className="relative my-8 sm:my-14 w-full flex flex-col items-center justify-center px-0">
+                        {/* ── THE INTERACTIVE CAKE ── */}
+                        <div className="relative my-6 sm:my-8 w-full flex flex-col items-center justify-center px-0">
                             <Cake
                                 isLit={!isWishMade}
                                 isSliced={isCakeCut}
